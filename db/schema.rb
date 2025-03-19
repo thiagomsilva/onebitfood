@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2025_03_14_024231) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,8 +50,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_14_024231) do
 
   create_table "order_products", force: :cascade do |t|
     t.integer "quantity"
-    t.integer "order_id", null: false
-    t.integer "product_id", null: false
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_order_products_on_order_id"
@@ -64,7 +67,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_14_024231) do
     t.string "number"
     t.string "complement"
     t.integer "status", default: 0
-    t.integer "restaurant_id", null: false
+    t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["restaurant_id"], name: "index_orders_on_restaurant_id"
@@ -72,7 +75,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_14_024231) do
 
   create_table "product_categories", force: :cascade do |t|
     t.string "title"
-    t.integer "restaurant_id", null: false
+    t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["restaurant_id"], name: "index_product_categories_on_restaurant_id"
@@ -82,7 +85,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_14_024231) do
     t.string "name"
     t.text "description"
     t.float "price"
-    t.integer "product_category_id", null: false
+    t.bigint "product_category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
@@ -97,7 +100,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_14_024231) do
     t.string "neighborhood"
     t.string "number"
     t.string "complement"
-    t.integer "category_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_restaurants_on_category_id"

@@ -231,3 +231,5 @@ prod = Product.create!(name: 'Salada de quinoa', price: 20.90, description: 'Alf
 prod.image.attach(io: File.open('public/images/products/salada-de-quinoa.jpg'), filename: 'salada-de-quinoa.jpg')
 prod = Product.create!(name: 'Coleslaw', price: 11, description: 'Repolho roxo, couve, cenoura, cebola, maionese de castanha e xylitol',  product_category: pc)
 prod.image.attach(io: File.open('public/images/products/coleslaw2.jpeg'), filename: 'coleslaw2.jpeg')
+
+puts 'Seeds finalizado com sucesso!'
