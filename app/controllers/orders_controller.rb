@@ -1,11 +1,10 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show]
 
-  # Todo: verificar a criação do pedido
   def create
     @order = Order.new(order_params)
     if @order.save
-      render json: @order, status: :created
+      @order
     else
       render json: @order.errors, status: :unprocessable_entity
     end
@@ -24,7 +23,7 @@ class OrdersController < ApplicationController
     params.require(:order).permit(
       :name,
       :phone_number,
-      :total_value,
+      :restaurant_id,
       :city,
       :neighborhood,
       :street,
