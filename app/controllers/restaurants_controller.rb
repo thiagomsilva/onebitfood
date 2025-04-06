@@ -17,9 +17,8 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
   end
 
-  # Todo: Fix this method to use ransack
   def filter_by_query
-    @restaurants = @restaurants.ransack(name_or_description_cont: params[:q]).result
+    @restaurants = @restaurants.where("name ILIKE ? OR description ILIKE ?", "%#{params[:q]}%", "%#{params[:q]}%")
   end
 
   def filter_by_city
